@@ -39,7 +39,12 @@ public class PrayerPlaces extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng FredensMoske = new LatLng(56.165814, 10.133332);
+        LatLng MadniMasjid = new LatLng(56.142216, 10.151753);
+        LatLng MasjidTaqwa = new LatLng(56.141630, 10.151977);
+        LatLng AishaMoskeen = new LatLng(56.164297, 10.124341);
+        LatLng EckerbergsgadeMoskeen = new LatLng(56.151341, 10.195684);
+        LatLng SultanAyyubMoskeen = new LatLng(56.160400, 10.205739);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
