@@ -1,13 +1,20 @@
 package com.example.byteme.salahfinder;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class PrayerPlaces extends FragmentActivity implements OnMapReadyCallback {
@@ -45,7 +52,70 @@ public class PrayerPlaces extends FragmentActivity implements OnMapReadyCallback
         LatLng AishaMoskeen = new LatLng(56.164297, 10.124341);
         LatLng EckerbergsgadeMoskeen = new LatLng(56.151341, 10.195684);
         LatLng SultanAyyubMoskeen = new LatLng(56.160400, 10.205739);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        mMap.addMarker(new MarkerOptions().position(FredensMoske).title("FredensMoske"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(FredensMoske));
+
+        mMap.addMarker(new MarkerOptions().position(MasjidTaqwa).title("MasjidTaqwa"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MasjidTaqwa));
+
+        mMap.addMarker(new MarkerOptions().position(AishaMoskeen).title("AishaMoskeen"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(AishaMoskeen));
+
+        mMap.addMarker(new MarkerOptions().position(EckerbergsgadeMoskeen).title("EckerbergsgadeMoskeen"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(EckerbergsgadeMoskeen));
+
+        mMap.addMarker(new MarkerOptions().position(SultanAyyubMoskeen).title("SultanAyyubMoskeen"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(SultanAyyubMoskeen));
+
+        mMap.addMarker(new MarkerOptions().position(MadniMasjid).title("MadniMasjid"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MadniMasjid));
+
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                mMap.addMarker(new MarkerOptions().position(latLng).title("titel"));
+            }
+        });
+    }
+    public class MyActivity extends Activity {
+        protected void onCreate(Bundle icicle) {
+            super.onCreate(icicle);
+
+            setContentView(R.layout.activity_prayer_places);
+
+            final Button button = (Button) findViewById(R.id.hej);
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // Perform action on click
+                }
+            });
+        }
+    }
+    public class MarkerDemoActivity extends AppCompatActivity implements
+            GoogleMap.OnInfoWindowClickListener,
+            OnMapReadyCallback {
+
+        private GoogleMap mMap;
+
+        @Override
+        public void onMapReady(GoogleMap map) {
+            mMap = map;
+            Log.e("map", "onMapReady");
+
+            // Add markers to the map and do other map setup.
+
+             //mMap.addMarker(new MarkerOptions().position(new LatLng()).title("ghgthg");
+
+
+            // Set a listener for info window events.
+            mMap.setOnInfoWindowClickListener(this);
+        }
+
+        @Override
+        public void onInfoWindowClick(Marker marker) {
+            Toast.makeText(this, "Info window clicked",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
