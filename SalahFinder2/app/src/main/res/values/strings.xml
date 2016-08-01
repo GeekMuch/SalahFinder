@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SalahFinder</string>
+    <string name="title_activity_prayer_places">Map</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAXanhnr2bIt_IFJTCFpvvt2Qesrhc9Szc</string>
+</resources>
